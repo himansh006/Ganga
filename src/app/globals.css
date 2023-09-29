@@ -74,3 +74,30 @@
     @apply bg-background text-foreground;
   }
 }
+
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #12121250 #ffffff00;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #ffffff00;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #12121250;
+  border-radius: 10px;
+  border: 2px solid #80ed9900;
+  visibility: hidden;
+}
+
+*:active::-webkit-scrollbar-thumb,
+*:focus::-webkit-scrollbar-thumb,
+*:hover::-webkit-scrollbar-thumb {
+  visibility: visible;
+}

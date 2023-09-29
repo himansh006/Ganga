@@ -12,7 +12,7 @@ export default function LeftBar({ leftBarStatus }) {
     <div
       className={`${
         leftBarStatus ? "w-[300px]" : "hidden w-0"
-      } transition-all duration-200  bg-white-100/50 h-[calc(100vh-134px)] z-10 p-4 overflow-y-auto overflow-x-hidden relative`}
+      } transition-all duration-200  bg-white-100/50 h-[calc(100vh-134px)] z-10 p-4 overflow-y-auto overflow-x-hidden relative shadow-[5px_10px_5px] shadow-[#12121210]`}
     >
       {/* Search Bar */}
       <div className="border border-primaryBlue/10 rounded h-8  flex p-3 py-4 text-sm items-center gap-2 text-[#12121270]">
