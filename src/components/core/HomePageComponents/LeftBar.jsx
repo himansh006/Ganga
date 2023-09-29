@@ -6,7 +6,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { ChevronLeft } from "lucide-react";
 
 export default function LeftBar({ leftBarStatus }) {
   return (
