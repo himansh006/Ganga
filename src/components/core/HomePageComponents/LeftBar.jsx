@@ -6,8 +6,23 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import Link from "next/link";
+import { LeftNavOptions } from "@/data/LeftNavBarData";
+import { VerticalBarChart } from "../Chart Cmponent/VerticalBarChart";
 
 export default function LeftBar({ leftBarStatus }) {
+  const openModal = () => {
+    console.log("open modal");
+  };
+
   return (
     <div
       className={`${
@@ -30,23 +45,38 @@ export default function LeftBar({ leftBarStatus }) {
       {/* Accordion */}
       <div className="pl-8 pt-3 text-sm">
         <Accordion type="single" collapsible className="text-black/80">
-          <AccordionItem value="item-1">
-            <AccordionTrigger className="font-semibold">
-              Forecast
-            </AccordionTrigger>
-            <AccordionContent>
-              Yes. It adheres to the WAI-ARIA design pattern.
-            </AccordionContent>
-          </AccordionItem>
-
-          <AccordionItem value="item-2">
-            <AccordionTrigger className="font-semibold">
-              Observed Sites
-            </AccordionTrigger>
-            <AccordionContent>
-              Yes. It adheres to the WAI-ARIA design pattern.
-            </AccordionContent>
-          </AccordionItem>
+          {LeftNavOptions.map((tab, index) => (
+            <AccordionItem value={`item-${index}`}>
+              <AccordionTrigger className="font-semibold">
+                {tab.tabName}
+              </AccordionTrigger>
+              <AccordionContent>
+                <ul className="list-disc flex flex-col gap-y-2 text-sm">
+                  {tab.options.map((option, index) => (
+                    <li className="ml-5" key={index}>
+                      {/* Modal Content Start */}
+                      <Dialog>
+                        <DialogTrigger asChild>
+                          <div className="hover:underline transition-all duration-200 cursor-pointer">
+                            {option.title}
+                          </div>
+                        </DialogTrigger>
+                        <DialogContent className="">
+                          <DialogHeader>
+                            <DialogTitle>{tab.tabName} - {option.title}</DialogTitle>
+                            <DialogDescription>
+                              {option.component}
+                            </DialogDescription>
+                          </DialogHeader>
+                        </DialogContent>
+                      </Dialog>
+                      {/* Modal Content End */}
+                    </li>
+                  ))}
+                </ul>
+              </AccordionContent>
+            </AccordionItem>
+          ))}
         </Accordion>
       </div>
     </div>
