@@ -20,7 +20,7 @@ export default function RightBar({ rightBarStatus }) {
       <div className="text-white-100 mt-[10px]">
         <Swiper
           direction={"vertical"}
-          slidesPerView={6}
+          slidesPerView={5}
           loop={true}
           spaceBetween={30}
           freeMode={true}
