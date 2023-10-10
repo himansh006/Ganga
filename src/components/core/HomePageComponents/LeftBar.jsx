@@ -46,7 +46,7 @@ export default function LeftBar({ leftBarStatus }) {
       <div className="pl-8 pt-3 text-sm">
         <Accordion type="single" collapsible className="text-black/80">
           {LeftNavOptions.map((tab, index) => (
-            <AccordionItem value={`item-${index}`}>
+            <AccordionItem key={index} value={`item-${index}`}>
               <AccordionTrigger className="font-semibold">
                 {tab.tabName}
               </AccordionTrigger>
