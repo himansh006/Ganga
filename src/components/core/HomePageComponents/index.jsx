@@ -9,6 +9,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { MapContainer, TileLayer, useMap, Marker, Popup } from "react-leaflet";
 
 export default function ContentBar({
   setLeftBarOpen,
@@ -24,7 +25,7 @@ export default function ContentBar({
         !leftBarStatus && !rightBarStatus && "w-screen"
       } w-[calc(100vw-650px)] h-[calc(100vh-134px)] overflow-y-auto overflow-hidden`}
     >
-      <iframe
+      {/* <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3627771.3933752966!2d80.36868693152962!3d27.383662455453962!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399f21d52693d311%3A0x4d7299c262866519!2sGanges!5e0!3m2!1sen!2sin!4v1695900164721!5m2!1sen!2sin"
         className={`${!leftBarStatus && "w-[calc(100vw-650px+300px)]"} ${
           !rightBarStatus && "w-[calc(100vw-650px+350px)]"
@@ -33,7 +34,21 @@ export default function ContentBar({
         } w-[calc(100vw-650px)]`}
         height="650"
         loading="lazy"
-      ></iframe>
+      ></iframe> */}
+      <div>
+        <MapContainer
+          center={[28.619181, 77.314201]}
+          zoom={13}
+          scrollWheelZoom={false}
+        >
+          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+          <Marker position={[28.619181, 77.314201]}>
+            <Popup>
+              A pretty CSS3 popup. <br /> Easily customizable.
+            </Popup>
+          </Marker>
+        </MapContainer>
+      </div>
 
       {/* Minimize Left Panel */}
       <div
@@ -54,7 +69,9 @@ export default function ContentBar({
       <div
         title={rightBarStatus ? "Collapse" : "Expand"}
         onClick={() => setRightBarOpen(!rightBarStatus)}
-        className={` bg-primaryGreen w-4 h-10 rounded-l-md flex items-center justify-center text-white-100 fixed ${rightBarStatus ? "right-[350px]" : "right-0"} top-40 shadow shadow-[#12121250] hover:shadow-none  cursor-pointer z-[100]`}
+        className={` bg-primaryGreen w-4 h-10 rounded-l-md flex items-center justify-center text-white-100 fixed ${
+          rightBarStatus ? "right-[350px]" : "right-0"
+        } top-40 shadow shadow-[#12121250] hover:shadow-none  cursor-pointer z-[100]`}
       >
         <ChevronRight
           className={` ${
@@ -64,7 +81,6 @@ export default function ContentBar({
           strokeWidth={3}
         />
       </div>
-
 
       <h1 className="font-semibold px-4 pt-4 text-lg">{`Flood Impact Area(>40% inundation): `}</h1>
 
@@ -116,4 +132,19 @@ export default function ContentBar({
       </div>
     </div>
   );
+}
+
+{
+  /* 
+<MapContainer center={[28.619181, 77.314201]} zoom={13} scrollWheelZoom={true}>
+  <TileLayer
+    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+  />
+  <Marker position={[28.619181, 77.314201]}>
+    <Popup>
+      A pretty CSS3 popup. <br /> Easily customizable.
+    </Popup>
+  </Marker>
+</MapContainer> 
+*/
 }
