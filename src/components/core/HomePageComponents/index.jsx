@@ -9,6 +9,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+
+import Leaflet from "leaflet"
+import "leaflet/dist/leaflet.css" 
+
 import { MapContainer, TileLayer, useMap, Marker, Popup } from "react-leaflet";
 
 export default function ContentBar({
@@ -36,18 +40,20 @@ export default function ContentBar({
         loading="lazy"
       ></iframe> */}
       <div>
-        <MapContainer
+         <MapContainer
           center={[28.619181, 77.314201]}
           zoom={13}
           scrollWheelZoom={false}
+          style={{ flex: 1, width: '100%', height: '300px' }}
         >
+          
           <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
           <Marker position={[28.619181, 77.314201]}>
             <Popup>
               A pretty CSS3 popup. <br /> Easily customizable.
             </Popup>
-          </Marker>
-        </MapContainer>
+          </Marker>*
+        </MapContainer> 
       </div>
 
       {/* Minimize Left Panel */}
